@@ -1,0 +1,15 @@
+<div class="card">
+    <img class="card-img-top" [src]="book.cover" [alt]="book.title">
+    <div class="card-body">
+        <h4 class="card-title">{{ book.title }}</h4>
+        <p class="card-text" *ngIf="book.synopsis.length > 0">{{ book.synopsis[0] | truncate: 90 }}</p>
+        <div class="row">
+            <div class="col">
+                <p class="btn btn-danger btn-block">{{ book.price | currency:'EUR':true }}</p>
+            </div>
+            <div class="col">
+                <button class="btn btn-success btn-block" (click)="addToCart(book)" >Ajouter au panier</button>
+            </div>
+        </div>
+    </div>
+</div>
