@@ -9,7 +9,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 
 ## Technical stack
-Angular / RxJS / NgRx / Bootstrap
+Angular / RxJS / NgRx / Bootstrap.
 
 ## Useful dev informations
 
