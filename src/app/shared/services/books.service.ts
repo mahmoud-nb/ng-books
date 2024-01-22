@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import API from '../constants/api';
 import { Book } from '../models/book';
-import { COMMERCIAL_OFFERS, OFFER } from '../models/offers';
+import { COMMERCIAL_OFFERS } from '../models/offers';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +21,6 @@ export class BooksService {
 			tap(_ => this.log(`fetched books`)),
 			catchError(this.handleError('getBooks', []))
 		);
-
-    //return Observable.from([MOCK_BOOKS]);
   }
 
   getCommercialOffers(params: string){

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { off } from 'process';
 import { CART_OFFER, OFFER } from '../shared/models/offers';
 import { BooksService } from '../shared/services/books.service';
 import { RemoveBookAction } from '../store/actions/cart.actions';
