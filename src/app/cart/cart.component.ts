@@ -30,18 +30,17 @@ export class CartComponent implements OnInit {
     this.store.select(cartItems).subscribe( items => { 
       this.cartItems = items ;
 
-      if( this.cartItems.length > 0 ){
-        this.cartTotalPrice = items.length > 0 ? items.map( item => Number(item.item.price) * Number(item.qty) ).reduce( (a, b) => Number(a) + Number(b) ) : 0 ;
+      this.cartTotalPrice = items.length > 0 ? items.map( item => Number(item.item.price) * Number(item.qty) ).reduce( (a, b) => Number(a) + Number(b) ) : 0 ;
 
-        let isbns = this.cartItems.map( el => el.item.isbn );
-        const params = isbns.join(',');
-  
-        this.booksService.getCommercialOffers(params).subscribe( commercialOffers => { 
-          this.offers = commercialOffers.offers; 
+      let isbns = this.cartItems.map( el => el.item.isbn );
+      const params = isbns.join(',');
 
-          this.getBestOffer(this.cartTotalPrice, this.offers);
-        });
-      }
+      this.booksService.getCommercialOffers(params).subscribe( commercialOffers => { 
+        this.offers = commercialOffers.offers; 
+
+        this.getBestOffer(this.cartTotalPrice, this.offers);
+      });
+      
     });
   }
 
@@ -69,8 +68,6 @@ export class CartComponent implements OnInit {
       _offers = _offers.sort( (a,b) => Number(b.discounte) - Number(a.discounte) );
 
       this.bestOffer = _offers[0];
-
-      console.log('_offers :::: ', _offers, this.bestOffer);
     }
   }
 
